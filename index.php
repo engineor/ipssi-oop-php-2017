@@ -8,7 +8,7 @@ if (!file_exists(__DIR__.'/vendor/autoload.php')) {
 require __DIR__.'/vendor/autoload.php';
 
 $requestedClass = IndexController::class;
-if (strpos($_SERVER['REQUEST_URI'], '.') === true) {
+if (strpos($_SERVER['REQUEST_URI'], '.') !== false) {
     $requestedFile = substr(
         $_SERVER['REQUEST_URI'],
         0,

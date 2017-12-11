@@ -32,8 +32,6 @@ class LecturerController
 
         ob_start();
         include __DIR__.'/../../views/lecturer.phtml';
-        $content = ob_get_contents();
-        ob_end_clean();
-        return $content;
+        return ob_get_clean();
     }
 }
