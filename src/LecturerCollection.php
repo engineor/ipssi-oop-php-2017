@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Application;
+
 class LecturerCollection
 {
     private $lecturers;

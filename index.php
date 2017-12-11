@@ -1,10 +1,12 @@
 <?php
 
-include __DIR__.'/src/Lecturer.php';
-include __DIR__.'/src/LecturerCollection.php';
+if (!file_exists(__DIR__.'/vendor/autoload.php')) {
+    throw new Exception('Exec composer install');
+}
+require __DIR__.'/vendor/autoload.php';
 
-/** @var LecturerCollection $lecturers */
-$lecturers = include __DIR__.'/db.php';
+/** @var Application\LecturerCollection $lecturers */
+$lecturers = require __DIR__.'/db.php';
 ?>
 
 <!Doctype html>
@@ -13,7 +15,7 @@ $lecturers = include __DIR__.'/db.php';
 </head>
 <body>
     <ul>
-    <?php foreach ($lecturers->getLecturers() as $lecturer): /** @var $lecturer Lecturer */ ?>
+    <?php foreach ($lecturers->getLecturers() as $lecturer): /** @var $lecturer Application\Lecturer */ ?>
         <li>
             <?= $lecturer->getName() ?>
             <ul>

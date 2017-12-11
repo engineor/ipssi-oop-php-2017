@@ -1,0 +1,15 @@
+{
+    "name": "engineor/ipssi-oop-php-2017",
+    "authors": [
+        {
+            "name": "Thomas Dutrion",
+            "email": "thomas@engineor.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Application\\": "src/"
+        }
+    }
+}
