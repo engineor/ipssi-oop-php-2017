@@ -25,4 +25,9 @@ class Lecturer
     {
         return $this->lectures;
     }
+
+    public function is(string $name) : bool
+    {
+        return $name === $this->name;
+    }
 }
