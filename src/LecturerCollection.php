@@ -6,7 +6,7 @@ class LecturerCollection
 {
     private $lecturers;
 
-    public function __construct(array $lecturers = [])
+    public function __construct(Lecturer ...$lecturers)
     {
         $this->lecturers = $lecturers;
     }
