@@ -5,4 +5,4 @@ if (!file_exists(__DIR__.'/vendor/autoload.php')) {
 }
 require __DIR__.'/vendor/autoload.php';
 
-echo (new \Application\Router\Router())->dispatch($_SERVER['REQUEST_URI']);
+echo (new \Application\Router\Router($helper))->dispatch($_SERVER['REQUEST_URI']);
