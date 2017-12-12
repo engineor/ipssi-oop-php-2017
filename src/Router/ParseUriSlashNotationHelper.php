@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tdutrion
- * Date: 12/12/2017
- * Time: 09:38
- */
+
+declare(strict_types=1);
 
 namespace Application\Router;
-
 
 use Exception;
 
@@ -37,6 +32,6 @@ class ParseUriSlashNotationHelper implements ParseUriHelper
 
         $requestedFile = \ucfirst($requestedFile);
 
-        return "\Application\Controller\\{$requestedFile}Controller";
+        return "Application\Controller\\{$requestedFile}Controller";
     }
 }
