@@ -9,6 +9,9 @@ use Application\Router\Router;
 class Application
 {
     private $container;
+    /**
+     * @var Router
+     */
     private $router;
 
     public function __construct()
@@ -17,5 +20,10 @@ class Application
         $this->container = new Container($config);
 
         $this->router = $this->container->get(Router::class);
+    }
+
+    public function dispatch(string $requestUri) : string
+    {
+        return $this->router->dispatch($requestUri);
     }
 }

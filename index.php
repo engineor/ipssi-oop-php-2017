@@ -7,4 +7,4 @@ require __DIR__.'/vendor/autoload.php';
 
 $helper = new \Application\Router\ParseUriDotNotationHelper();
 $helper = new \Application\Router\ParseUriSlashNotationHelper();
-echo (new \Application\Router\Router($helper))->dispatch($_SERVER['REQUEST_URI']);
+echo (new \Application\Application())->dispatch($_SERVER['REQUEST_URI']);
