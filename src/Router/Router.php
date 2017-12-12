@@ -12,6 +12,15 @@ use Exception;
 class Router
 {
     private $controllerClass = IndexController::class;
+    /**
+     * @var ParseUriHelper
+     */
+    private $parseUriHelper;
+
+    public function __construct(ParseUriHelper $parseUriHelper)
+    {
+        $this->parseUriHelper = $parseUriHelper;
+    }
 
     /**
      * Dispatch a request to a controller and fetch the html view
@@ -23,7 +32,7 @@ class Router
     public function dispatch(string $requestUri) : string
     {
         try {
-            $this->controllerClass = $this->parseRequestUri($requestUri);
+            $this->controllerClass = $this->parseUriHelper->parseUri($requestUri);
         } catch (Exception $exception) {
 
         }
@@ -39,31 +48,7 @@ class Router
         return (new $this->controllerClass())->indexAction();
     }
 
-    /**
-     * @param string $requestUri
-     * @return string
-     * @throws Exception
-     */
-    private function parseRequestUri(string $requestUri) : string
-    {
-        if (strpos($requestUri, '.') === false) {
-            throw new Exception('L\'URL fournie ne reponds pas au pattern défini');
-        }
 
-        $requestedFile = substr(
-            $requestUri,
-            0,
-            strpos($requestUri, '.')
-        );
-
-        if ($requestedFile[0] === '/') {
-            $requestedFile = substr($requestedFile, 1);
-        }
-
-        $requestedFile = ucfirst($requestedFile);
-
-        return "\Application\Controller\\{$requestedFile}Controller";
-    }
 
     /**
      * @param string $controllerClass
