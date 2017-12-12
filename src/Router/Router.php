@@ -28,13 +28,13 @@ class Router
     }
 
     /**
-     * Dispatch a request to a controller and fetch the html view
+     * Resolve a request to a controller name
      *
      * @param string $requestUri
-     * @return string
+     * @return string Nom de la classe controller
      * @throws Exception
      */
-    public function dispatch(string $requestUri) : string
+    public function resolve(string $requestUri) : string
     {
         try {
             $this->controllerClass = $this->parseUriHelper->parseUri($requestUri);
@@ -50,7 +50,7 @@ class Router
             return (new ErrorController($exception))->error500Action();
         }
 
-        return (new $this->controllerClass())->indexAction();
+        return $this->controllerClass;
     }
 
 

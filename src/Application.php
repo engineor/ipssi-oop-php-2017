@@ -25,6 +25,6 @@ class Application
 
     public function dispatch(string $requestUri) : string
     {
-        return $this->router->dispatch($requestUri);
+        return ($this->container->get($this->router->resolve($requestUri)))->indexAction();
     }
 }
