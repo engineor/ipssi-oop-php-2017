@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Application;
 
 use Application\Router\Router;
+use Zend\ServiceManager\ServiceManager;
 
 class Application
 {
@@ -17,7 +18,7 @@ class Application
     public function __construct()
     {
         $config = require  __DIR__.'/../config/application.config.php';
-        $this->container = new Container($config);
+        $this->container = new ServiceManager($config);
 
         $this->router = $this->container->get(Router::class);
     }

@@ -16,10 +16,15 @@ class Router
      * @var ParseUriHelper
      */
     private $parseUriHelper;
+    /**
+     * @var \DateTimeImmutable
+     */
+    private $dateTimeImmutable;
 
-    public function __construct(ParseUriHelper $parseUriHelper)
+    public function __construct(ParseUriHelper $parseUriHelper, \DateTimeInterface $dateTimeImmutable)
     {
         $this->parseUriHelper = $parseUriHelper;
+        $this->dateTimeImmutable = $dateTimeImmutable;
     }
 
     /**
