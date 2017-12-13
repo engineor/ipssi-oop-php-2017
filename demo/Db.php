@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Application;
+namespace Demo;
+
+use Application\Lecturer;
+use Application\LecturerCollection;
 
 class Db
 {
