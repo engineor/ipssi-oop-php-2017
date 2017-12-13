@@ -4,30 +4,28 @@ declare(strict_types=1);
 
 namespace Application\Controller;
 
-use Demo\Db;
-use Application\Lecturer;
-use Application\LecturerCollection;
+use Application\Exception\LecturerNotFoundException;
+use Application\Repository\LecturerRepository;
 
-class LecturerController
+final class LecturerController
 {
+    /**
+     * @var LecturerRepository
+     */
+    private $lecturerRepository;
+
+    public function __construct(LecturerRepository $lecturerRepository)
+    {
+        $this->lecturerRepository = $lecturerRepository;
+    }
+
     public function indexAction() : string
     {
-        /** @var LecturerCollection $lecturers */
-        $lecturers = Db::provideLecturers();
-
-        $selectedLecturer = null;
-
-        foreach ($lecturers->getLecturers() as $lecturer) {
-            /** @var $lecturer Lecturer */
-            $name = $_GET['lecturer'];
-            if (!$lecturer->is($name)) {
-                continue;
-            }
-            $selectedLecturer = $lecturer;
-        }
+        $searchName = $_GET['lecturer'] ?? '';
+        $selectedLecturer = $this->lecturerRepository->findByName($searchName);
 
         if ($selectedLecturer === null) {
-            throw new \Exception('Lecturer not found');
+            return (new ErrorController(new LecturerNotFoundException($searchName)))->error404Action();
         }
 
         ob_start();

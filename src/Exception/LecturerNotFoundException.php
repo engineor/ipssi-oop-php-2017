@@ -6,7 +6,7 @@ namespace Application\Exception;
 
 use LogicException;
 
-final class InvalidControllerException extends LogicException
+final class LecturerNotFoundException extends LogicException
 {
 
 }

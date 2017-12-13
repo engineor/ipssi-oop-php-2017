@@ -7,7 +7,7 @@ namespace Application;
 use Application\Router\Router;
 use Zend\ServiceManager\ServiceManager;
 
-class Application
+final class Application
 {
     private $container;
     /**

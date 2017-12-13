@@ -9,7 +9,7 @@ use Application\Router\Router;
 use DateTimeInterface;
 use Psr\Container\ContainerInterface;
 
-class RouterFactory
+final class RouterFactory
 {
     public function __invoke(ContainerInterface $container) : Router
     {

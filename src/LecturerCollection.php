@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Application;
 
-class LecturerCollection
+final class LecturerCollection
 {
     private $lecturers;
 

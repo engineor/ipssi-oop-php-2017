@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Application;
 
-class Container
+use Exception;
+
+final class Container
 {
     /**
      * @var array
@@ -29,13 +31,14 @@ class Container
     /**
      * @param string $key
      * @return object
-     * @throws \Exception
+     * @throws Exception
      */
     public function get(string $key) : object
     {
         if (!$this->has($key)) {
-            throw new \Exception("Service {$key} not found");
+            throw new Exception("Service {$key} not found");
         }
+
         return $this->config[$key];
     }
 }

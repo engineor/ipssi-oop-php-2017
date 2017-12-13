@@ -6,7 +6,7 @@ namespace Application;
 
 use Application\Helper\SlugifyHelper;
 
-class Lecture
+final class Lecture
 {
     use SlugifyHelper;
 

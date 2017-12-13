@@ -6,7 +6,11 @@ namespace Application\Router;
 
 use Exception;
 
-class ParseUriDotNotationHelper implements ParseUriHelper
+use function strpos;
+use function substr;
+use function ucfirst;
+
+final class ParseUriDotNotationHelper implements ParseUriHelper
 {
     /**
      * @param string $requestUri
@@ -15,21 +19,21 @@ class ParseUriDotNotationHelper implements ParseUriHelper
      */
     public function parseUri(string $requestUri): string
     {
-        if (\strpos($requestUri, '.') === false) {
+        if (strpos($requestUri, '.') === false) {
             throw new Exception('L\'URL fournie ne reponds pas au pattern défini');
         }
 
-        $requestedFile = \substr(
+        $requestedFile = substr(
             $requestUri,
             0,
-            \strpos($requestUri, '.')
+            strpos($requestUri, '.')
         );
 
         if ($requestedFile[0] === '/') {
-            $requestedFile = \substr($requestedFile, 1);
+            $requestedFile = substr($requestedFile, 1);
         }
 
-        $requestedFile = \ucfirst($requestedFile);
+        $requestedFile = ucfirst($requestedFile);
 
         return "Application\Controller\\{$requestedFile}Controller";
     }

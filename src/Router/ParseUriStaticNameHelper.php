@@ -8,9 +8,13 @@ use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
 use Exception;
 
-class ParseUriStaticNameHelper implements ParseUriHelper
-{
+use function explode;
+use function preg_match;
+use function substr;
+use function urldecode;
 
+final class ParseUriStaticNameHelper implements ParseUriHelper
+{
     /**
      * @param string $requestUri
      * @return string
@@ -19,7 +23,7 @@ class ParseUriStaticNameHelper implements ParseUriHelper
     public function parseUri(string $requestUri): string
     {
         if ($requestUri === '/') {
-            $requestUri = \substr($requestUri, 1);
+            $requestUri = substr($requestUri, 1);
         }
 
         if (preg_match('#/lecturer/.*#', $requestUri)) {

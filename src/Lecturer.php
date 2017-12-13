@@ -6,26 +6,34 @@ namespace Application;
 
 use Application\Helper\SlugifyHelper;
 
-class Lecturer
+final class Lecturer
 {
     use SlugifyHelper;
 
-    private $name;
+    /**
+     * @var string
+     */
+    private $firstName;
+    /**
+     * @var string
+     */
+    private $lastName;
 
     private $lectures;
 
-    public function __construct(string $name)
+    public function __construct(string $firstName, string $lastName)
     {
-        $this->name = $name;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
         $this->lectures = [];
     }
 
     public function getName(): string
     {
-        return $this->name;
+        return "{$this->firstName} {$this->lastName}";
     }
 
-    public function slugifiedName()
+    public function slugifiedName() : string
     {
         return $this->slugify($this->getName());
     }
@@ -37,6 +45,6 @@ class Lecturer
 
     public function is(string $name) : bool
     {
-        return $name === $this->name;
+        return $name === $this->getName();
     }
 }

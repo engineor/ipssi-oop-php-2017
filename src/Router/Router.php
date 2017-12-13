@@ -7,11 +7,15 @@ namespace Application\Router;
 use Application\Controller\ErrorController;
 use Application\Controller\IndexController;
 use Application\Exception\InvalidControllerException;
+use DateTimeInterface;
 use Exception;
 
-class Router
+use function class_exists;
+
+final class Router
 {
     private $controllerClass = IndexController::class;
+
     /**
      * @var ParseUriHelper
      */
@@ -21,7 +25,7 @@ class Router
      */
     private $dateTimeImmutable;
 
-    public function __construct(ParseUriHelper $parseUriHelper, \DateTimeInterface $dateTimeImmutable)
+    public function __construct(ParseUriHelper $parseUriHelper, DateTimeInterface $dateTimeImmutable)
     {
         $this->parseUriHelper = $parseUriHelper;
         $this->dateTimeImmutable = $dateTimeImmutable;
@@ -53,17 +57,14 @@ class Router
         return $this->controllerClass;
     }
 
-
-
     /**
      * @param string $controllerClass
      * @throws Exception
      */
     private function validateController(string $controllerClass) : void
     {
-
         if (!class_exists($controllerClass)) {
-            throw new \Application\Exception\InvalidControllerException('Invalid controller specified');
+            throw new InvalidControllerException('Invalid controller specified');
         }
     }
 }

@@ -7,13 +7,13 @@ namespace Demo;
 use Application\Lecturer;
 use Application\LecturerCollection;
 
-class Db
+final class Db
 {
     public static function provideLecturers() : LecturerCollection
     {
         return new LecturerCollection(...[
-            new Lecturer('Thomas Dutrion'),
-            new Lecturer('Cyrille Grandval'),
+            new Lecturer('Thomas', 'Dutrion'),
+            new Lecturer('Cyrille', 'Grandval'),
         ]);
     }
 }

@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace Application\Controller;
 
-class ErrorController
+use Throwable;
+
+final class ErrorController
 {
     /**
      * @var \Exception
      */
     private $exception;
 
-    public function __construct(\Exception $exception)
+    public function __construct(Throwable $exception)
     {
         $this->exception = $exception;
     }
@@ -23,7 +25,7 @@ class ErrorController
         return ob_get_clean();
     }
 
-    public function error500Action()
+    public function error500Action() : string
     {
         ob_start();
         include __DIR__.'/../../views/error500.phtml';
