@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Application\Controller;
 
-use Application\Db;
+use Demo\Db;
 use Application\Lecturer;
 use Application\LecturerCollection;
 

@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Application;
 
+use Application\Helper\SlugifyHelper;
+
 class Lecturer
 {
+    use SlugifyHelper;
+
     private $name;
 
     private $lectures;
@@ -19,6 +23,11 @@ class Lecturer
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function slugifiedName()
+    {
+        return $this->slugify($this->getName());
     }
 
     public function getLectures(): array

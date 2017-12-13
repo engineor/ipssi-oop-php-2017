@@ -1,8 +1,10 @@
 <?php
 
-use Application\Controller;
+use Application\Controller\IndexController;
+use Application\Controller\LecturerController;
 use Application\Factory\ParseUriHelperFactory;
 use Application\Factory\RouterFactory;
+use Application\Repository\LecturerRepository;
 use Application\Router\ParseUriHelper;
 use Application\Router\Router;
 use Psr\Container\ContainerInterface;
@@ -14,11 +16,27 @@ return [
         DateTimeInterface::class => function(ContainerInterface $container) {
             return new DateTimeImmutable();
         },
-        Controller\LecturerController::class => function() {
-            return new Controller\LecturerController();
+        LecturerController::class => function(ContainerInterface $container) {
+            $databaseConnection = $container->get(PDO::class);
+            return new LecturerController($databaseConnection);
         },
-        Controller\IndexController::class => function() {
-            return new Controller\IndexController();
+        LecturerRepository::class => function(ContainerInterface $container) {
+            $databaseConnection = $container->get(PDO::class);
+            return new LecturerRepository($databaseConnection);
         },
+        IndexController::class => function(ContainerInterface $container) {
+            $lecturerRepository = $container->get(LecturerRepository::class);
+            return new IndexController($lecturerRepository);
+        },
+        PDO::class => function(ContainerInterface $container) {
+            $dbConn = new \PDO(
+                'mysql:host=database;dbname=demo',
+                'demo',
+                'demo'
+            );
+
+            $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $dbConn;
+        }
     ],
 ];
