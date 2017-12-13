@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Application\Repository;
 
-use Application\Lecturer;
-use Application\LecturerCollection;
+use Application\Collection\LecturerCollection;
+use Application\Entity\Lecturer;
 use PDO;
 
 final class PdoLecturerRepository implements LecturerRepository

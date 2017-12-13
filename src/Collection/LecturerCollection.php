@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Application;
+namespace Application\Collection;
+
+use Application\Entity\Lecturer;
 
 final class LecturerCollection
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Application\Repository\Lecturer;
 
-use Application\LecturerCollection;
+use Application\Collection\LecturerCollection;
 
 interface FindAll
 {

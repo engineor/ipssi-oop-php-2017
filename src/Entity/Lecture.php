@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Application;
+namespace Application\Entity;
 
 use Application\Helper\SlugifyHelper;
 
