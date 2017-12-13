@@ -5,6 +5,4 @@ if (!file_exists(__DIR__.'/vendor/autoload.php')) {
 }
 require __DIR__.'/vendor/autoload.php';
 
-$helper = new \Application\Router\ParseUriDotNotationHelper();
-$helper = new \Application\Router\ParseUriSlashNotationHelper();
 echo (new \Application\Application())->dispatch($_SERVER['REQUEST_URI']);
