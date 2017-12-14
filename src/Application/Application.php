@@ -17,7 +17,7 @@ final class Application
 
     public function __construct()
     {
-        $config = require  __DIR__.'/../config/application.config.php';
+        $config = require  __DIR__.'/../../config/application.config.php';
         $this->container = new ServiceManager($config);
 
         $this->router = $this->container->get(Router::class);
@@ -26,9 +26,9 @@ final class Application
     public function dispatch(string $requestUri) : string
     {
         $content = ($this->container->get($this->router->resolve($requestUri)))->indexAction();
-        if (is_file(__DIR__.'/../views/layout.phtml')) {
+        if (is_file(__DIR__.'/../../views/layout.phtml')) {
             ob_start();
-            include __DIR__.'/../views/layout.phtml';
+            include __DIR__.'/../../views/layout.phtml';
             return ob_get_clean();
         }
         return $content;

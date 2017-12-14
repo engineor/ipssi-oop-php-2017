@@ -23,7 +23,7 @@ final class IndexController
         $lecturers = $this->lecturerRepository->fetchAll();
 
         ob_start();
-        include __DIR__.'/../../views/index.phtml';
+        include __DIR__.'/../../../views/index.phtml';
         return ob_get_clean();
     }
 }

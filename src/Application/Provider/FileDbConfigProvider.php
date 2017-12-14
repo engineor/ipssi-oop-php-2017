@@ -16,7 +16,7 @@ final class FileDbConfigProvider implements DbConfigProvider
 
     public function __construct()
     {
-        $config = require __DIR__ . '/../../config/database.config.php';
+        $config = require __DIR__ . '/../../../config/database.config.php';
         if (!isset(
             $config['host'],
             $config['name'],

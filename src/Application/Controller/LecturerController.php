@@ -29,7 +29,7 @@ final class LecturerController
         }
 
         ob_start();
-        include __DIR__.'/../../views/lecturer.phtml';
+        include __DIR__.'/../../../views/lecturer.phtml';
         return ob_get_clean();
     }
 }

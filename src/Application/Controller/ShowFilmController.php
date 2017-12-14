@@ -6,9 +6,10 @@ namespace Application\Controller;
 
 use Application\Collection\FilmCollection;
 use Application\Entity\Film;
+use Application\Exception\FilmNotFoundException;
 use Application\Repository\FilmRepository;
 
-final class FilmController
+final class ShowFilmController
 {
     /**
      * @var FilmRepository
@@ -22,10 +23,14 @@ final class FilmController
 
     public function indexAction() : string
     {
-        $films = $this->filmRepository->fetchAll();
+        try {
+            $film = $this->filmRepository->get($_GET['name'] ?? '');
 
-        ob_start();
-        include __DIR__.'/../../views/film.phtml';
-        return ob_get_clean();
+            ob_start();
+            include __DIR__.'/../../../views/film-details.phtml';
+            return ob_get_clean();
+        } catch (FilmNotFoundException $exception) {
+            return (new ErrorController($exception))->error404Action();
+        }
     }
 }
