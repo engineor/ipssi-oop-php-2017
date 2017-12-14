@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Application\Provider;
 
+use Application\Exception\InvalidDatabaseConfigurationException;
+
 final class FileDbConfigProvider implements DbConfigProvider
 {
     private $host;
