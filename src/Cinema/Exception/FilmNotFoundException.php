@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Application\Exception;
+namespace Cinema\Exception;
 
 use LogicException;
 

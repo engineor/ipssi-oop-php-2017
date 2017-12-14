@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Application\Router;
 
-use Application\Controller\FilmController;
 use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
-use Application\Controller\ShowFilmController;
+use Cinema\Controller\FilmController;
+use Cinema\Controller\ShowFilmController;
 use Exception;
 
 use function explode;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Application\Collection;
+namespace Cinema\Collection;
 
-use Application\Entity\Film;
+use Cinema\Entity\Film;
 use ArrayIterator;
 use Iterator;
 use IteratorIterator;

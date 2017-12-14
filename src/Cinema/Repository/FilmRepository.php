@@ -2,20 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Application\Repository;
+namespace Cinema\Repository;
 
-use Application\Collection\FilmCollection;
-use Application\Entity\Film;
-use Application\Exception\FilmNotFoundException;
+use Cinema\Collection\FilmCollection;
+use Cinema\Entity\Film;
+use Cinema\Exception\FilmNotFoundException;
+use PDO;
 
 final class FilmRepository
 {
     /**
-     * @var \PDO
+     * @var PDO
      */
     private $pdo;
 
-    public function __construct(\PDO $pdo)
+    public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }

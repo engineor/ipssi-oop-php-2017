@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Application\Controller;
+namespace Cinema\Controller;
 
-use Application\Collection\FilmCollection;
-use Application\Entity\Film;
-use Application\Exception\FilmNotFoundException;
-use Application\Repository\FilmRepository;
+use Cinema\Collection\FilmCollection;
+use Cinema\Entity\Film;
+use Cinema\Exception\FilmNotFoundException;
+use Cinema\Repository\FilmRepository;
 
 final class ShowFilmController
 {

@@ -1,9 +1,7 @@
 <?php
 
-use Application\Controller\FilmController;
 use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
-use Application\Controller\ShowFilmController;
 use Application\Factory\DateTimeImmutableFactory;
 use Application\Factory\DbConfigProviderFactory;
 use Application\Factory\IndexControllerFactory;
@@ -13,10 +11,12 @@ use Application\Factory\ParseUriHelperFactory;
 use Application\Factory\PdoConnectionFactory;
 use Application\Factory\RouterFactory;
 use Application\Provider\DbConfigProvider;
-use Application\Repository\FilmRepository;
 use Application\Repository\LecturerRepository;
 use Application\Router\ParseUriHelper;
 use Application\Router\Router;
+use Cinema\Controller\FilmController;
+use Cinema\Controller\ShowFilmController;
+use Cinema\Repository\FilmRepository;
 use Psr\Container\ContainerInterface;
 
 return [
