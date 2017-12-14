@@ -1,5 +1,6 @@
 <?php
 
+use Application\Controller\FilmController;
 use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
 use Application\Factory\DateTimeImmutableFactory;
@@ -21,6 +22,9 @@ return [
         Router::class => RouterFactory::class,
         DateTimeInterface::class => DateTimeImmutableFactory::class,
         LecturerController::class => LecturerControllerFactory::class,
+        FilmController::class => function() {
+            return new FilmController();
+        },
         IndexController::class => IndexControllerFactory::class,
         LecturerRepository::class => LecturerRepositoryFactory::class,
         PDO::class => PdoConnectionFactory::class,

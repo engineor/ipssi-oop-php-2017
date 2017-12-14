@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Application\Router;
 
+use Application\Controller\FilmController;
 use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
 use Exception;
@@ -24,6 +25,9 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
     {
         if ($requestUri === '/') {
             $requestUri = substr($requestUri, 1);
+        }
+        if ($requestUri === '/film') {
+            return FilmController::class;
         }
 
         if (preg_match('#/lecturer/.*#', $requestUri)) {
