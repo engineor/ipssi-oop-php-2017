@@ -12,6 +12,7 @@ use Application\Factory\ParseUriHelperFactory;
 use Application\Factory\PdoConnectionFactory;
 use Application\Factory\RouterFactory;
 use Application\Provider\DbConfigProvider;
+use Application\Repository\FilmRepository;
 use Application\Repository\LecturerRepository;
 use Application\Router\ParseUriHelper;
 use Application\Router\Router;
@@ -24,8 +25,12 @@ return [
         DateTimeInterface::class => DateTimeImmutableFactory::class,
         LecturerController::class => LecturerControllerFactory::class,
         FilmController::class => function(ContainerInterface $container) {
-            $conn = $container->get(PDO::class);
+            $conn = $container->get(FilmRepository::class);
             return new FilmController($conn);
+        },
+        FilmRepository::class => function(ContainerInterface $container) {
+            $pdo = $container->get(PDO::class);
+            return new FilmRepository($pdo);
         },
         IndexController::class => IndexControllerFactory::class,
         LecturerRepository::class => LecturerRepositoryFactory::class,

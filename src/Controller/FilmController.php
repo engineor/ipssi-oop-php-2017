@@ -6,27 +6,23 @@ namespace Application\Controller;
 
 use Application\Collection\FilmCollection;
 use Application\Entity\Film;
+use Application\Repository\FilmRepository;
 
 final class FilmController
 {
     /**
-     * @var \PDO
+     * @var FilmRepository
      */
-    private $pdo;
+    private $filmRepository;
 
-    public function __construct(\PDO $pdo)
+    public function __construct(FilmRepository $filmRepository)
     {
-        $this->pdo = $pdo;
+        $this->filmRepository = $filmRepository;
     }
 
     public function indexAction() : string
     {
-        $result = $this->pdo->query('SELECT id, title FROM films');
-        $films = [];
-        while ($film = $result->fetch()) {
-            $films[] = new Film($film['title']);
-        }
-        $films = new FilmCollection(...$films);
+        $films = $this->filmRepository->fetchAll();
 
         ob_start();
         include __DIR__.'/../../views/film.phtml';
