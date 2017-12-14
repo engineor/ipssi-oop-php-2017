@@ -8,5 +8,4 @@ use LogicException;
 
 final class InvalidControllerException extends LogicException
 {
-
 }

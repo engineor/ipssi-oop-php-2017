@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Cinema\Controller;
 
-use Cinema\Collection\FilmCollection;
-use Cinema\Entity\Film;
+use Application\Controller\ErrorController;
 use Cinema\Exception\FilmNotFoundException;
 use Cinema\Repository\FilmRepository;
 

@@ -8,5 +8,4 @@ use LogicException;
 
 final class LecturerNotFoundException extends LogicException
 {
-
 }

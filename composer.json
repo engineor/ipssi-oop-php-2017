@@ -16,5 +16,8 @@
             "Application\\": "src/Application",
             "Cinema\\": "src/Cinema"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.9"
     }
 }

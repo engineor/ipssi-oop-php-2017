@@ -43,7 +43,6 @@ final class Router
         try {
             $this->controllerClass = $this->parseUriHelper->parseUri($requestUri);
         } catch (Exception $exception) {
-
         }
 
         try {

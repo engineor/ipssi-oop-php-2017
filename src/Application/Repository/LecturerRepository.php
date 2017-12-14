@@ -9,5 +9,4 @@ use Application\Repository\Lecturer\FindAll;
 
 interface LecturerRepository extends FindLecturer, FindAll
 {
-
 }

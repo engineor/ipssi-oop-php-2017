@@ -8,5 +8,4 @@ use LogicException;
 
 final class FilmNotFoundException extends LogicException
 {
-
 }

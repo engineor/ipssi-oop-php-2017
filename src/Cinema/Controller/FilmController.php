@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Cinema\Controller;
 
-use Cinema\Collection\FilmCollection;
-use Cinema\Entity\Film;
 use Cinema\Repository\FilmRepository;
 
 final class FilmController
