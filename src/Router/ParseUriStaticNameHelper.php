@@ -7,6 +7,7 @@ namespace Application\Router;
 use Application\Controller\FilmController;
 use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
+use Application\Controller\ShowFilmController;
 use Exception;
 
 use function explode;
@@ -28,6 +29,12 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
         }
         if ($requestUri === '/film') {
             return FilmController::class;
+        }
+
+        if (preg_match('#/film/.*#', $requestUri)) {
+            $requestUriParams = explode('/', $requestUri);
+            $_GET['name'] = urldecode($requestUriParams[2]);
+            return ShowFilmController::class;
         }
 
         if (preg_match('#/lecturer/.*#', $requestUri)) {

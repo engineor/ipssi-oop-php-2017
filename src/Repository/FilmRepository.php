@@ -6,6 +6,7 @@ namespace Application\Repository;
 
 use Application\Collection\FilmCollection;
 use Application\Entity\Film;
+use Application\Exception\FilmNotFoundException;
 
 final class FilmRepository
 {
@@ -27,5 +28,16 @@ final class FilmRepository
             $films[] = new Film($film['title']);
         }
         return new FilmCollection(...$films);
+    }
+
+    public function get(string $name) : Film
+    {
+        $statement = $this->pdo->prepare('SELECT id, title FROM films WHERE title = :name');
+        $statement->execute([':name' => $name]);
+        $film = $statement->fetch();
+        if (!$film) {
+            throw new FilmNotFoundException();
+        }
+        return new Film($film['title']);
     }
 }

@@ -3,6 +3,7 @@
 use Application\Controller\FilmController;
 use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
+use Application\Controller\ShowFilmController;
 use Application\Factory\DateTimeImmutableFactory;
 use Application\Factory\DbConfigProviderFactory;
 use Application\Factory\IndexControllerFactory;
@@ -31,6 +32,10 @@ return [
         FilmRepository::class => function(ContainerInterface $container) {
             $pdo = $container->get(PDO::class);
             return new FilmRepository($pdo);
+        },
+        ShowFilmController::class => function(ContainerInterface $container) {
+            $filmRepository = $container->get(FilmRepository::class);
+            return new ShowFilmController($filmRepository);
         },
         IndexController::class => IndexControllerFactory::class,
         LecturerRepository::class => LecturerRepositoryFactory::class,
