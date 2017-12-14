@@ -1,6 +1,7 @@
+<?php /* @var $films \Application\Collection\FilmCollection */ ?>
 <h1>Films</h1>
 <ul>
-    <?php foreach ($films->getFilms() as $film) : /* @var $film \Application\Entity\Film */ ?>
+    <?php foreach ($films as $film) : /* @var $film \Application\Entity\Film */ ?>
     <li><?= $film->name() ?></li>
     <?php endforeach ?>
 </ul>

@@ -5,18 +5,19 @@ declare(strict_types=1);
 namespace Application\Collection;
 
 use Application\Entity\Film;
+use ArrayIterator;
+use Iterator;
+use IteratorIterator;
 
-final class FilmCollection
+final class FilmCollection extends IteratorIterator implements Iterator
 {
-    private $films;
-
     public function __construct(Film ...$films)
     {
-        $this->films = $films;
+        parent::__construct(new ArrayIterator($films));
     }
 
-    public function getFilms(): array
+    public function current() : ?Film
     {
-        return $this->films;
+        return parent::current();
     }
 }
