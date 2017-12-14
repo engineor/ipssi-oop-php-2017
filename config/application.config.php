@@ -15,6 +15,7 @@ use Application\Provider\DbConfigProvider;
 use Application\Repository\LecturerRepository;
 use Application\Router\ParseUriHelper;
 use Application\Router\Router;
+use Psr\Container\ContainerInterface;
 
 return [
     'factories' => [
@@ -22,8 +23,9 @@ return [
         Router::class => RouterFactory::class,
         DateTimeInterface::class => DateTimeImmutableFactory::class,
         LecturerController::class => LecturerControllerFactory::class,
-        FilmController::class => function() {
-            return new FilmController();
+        FilmController::class => function(ContainerInterface $container) {
+            $conn = $container->get(PDO::class);
+            return new FilmController($conn);
         },
         IndexController::class => IndexControllerFactory::class,
         LecturerRepository::class => LecturerRepositoryFactory::class,
