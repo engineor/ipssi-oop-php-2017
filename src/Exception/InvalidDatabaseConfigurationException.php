@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Application\Provider;
+namespace Application\Exception;
 
 use LogicException;
 
