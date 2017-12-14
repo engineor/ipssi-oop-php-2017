@@ -20,6 +20,8 @@ services:
     image: mysql:5.7
     expose:
       - "3306"
+    volumes:
+      - ./fixtures/:/docker-entrypoint-initdb.d:ro
     environment:
       - MYSQL_ROOT_PASSWORD=demo
       - MYSQL_DATABASE=demo
